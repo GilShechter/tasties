@@ -7,6 +7,7 @@ from tasties_app.models import Category, Recipe, Comment, Ingredient, Rating
 from tasties_app.forms import CreateUserForm, CreateRecipeForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms import inlineformset_factory
+from django.core.management import call_command
 
 
 def base(request):
@@ -166,6 +167,7 @@ def create_recipe(request):
             if ingredient_formset.is_valid():
                 recipe = recipe_form.save()
                 ingredient_formset.save()
+                call_command('collectstatic', interactive=False, verbosity=0, clear=True)
                 return redirect(f'/view_recipe/{recipe.id}/')
             else:
                 for ingredient_form_errors in ingredient_formset.errors:
@@ -207,6 +209,7 @@ def edit_recipe(request, recipe_id):
                     recipe.recipe_picture = 'images/tasties_logo_round.png'
                     recipe.save()
                 ingredient_formset.save()
+                call_command('collectstatic', interactive=False, verbosity=0, clear=True)
                 return redirect(f'/view_recipe/{recipe.id}/')
             else:
                 for ingredient_form_errors in ingredient_formset.errors:
