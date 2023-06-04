@@ -21,6 +21,8 @@
       crossorigin="anonymous">
     </script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/65c0ff07b1.js" crossorigin="anonymous"></script>
     {% block css %}{% endblock %}
 
     <!-- Name and Description: -->
@@ -45,7 +47,7 @@
       {% if user.is_authenticated %}
           <!-- Search -->
           <form method='POST' action="{% url 'search' %}">
-          {% csrf_token %}             
+          {% csrf_token %}
           <div class="form-group">
             <span class="input-group-append">
               <input
@@ -59,7 +61,7 @@
                 class="btn btn-outline-secondary bg-white border-start-0 border rounded-pill ms-n3"
                 id="search-button"
               >
-                {% bs_icon 'search' %}
+              <i class="fas fa-magnifying-glass"></i>
               </button>
             </span>
           </div>
@@ -71,7 +73,7 @@
               type="button"
               data-bs-toggle="dropdown"
             >
-              {% bs_icon 'person-fill' %} Hello, {{ user.username }}
+              <i class="fas fa-user"></i> Hello, {{ user.username }}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="{% url 'create_recipe' %}">Add recipe</a>

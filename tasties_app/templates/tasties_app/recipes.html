@@ -52,8 +52,8 @@
                   {{ recipe.description }}
                 </p>
                 <div class="card-footer">
-                  <span class="minutes">{% bs_icon 'clock-history' %} {{ recipe.minutes_to_make }} mins</span>
-                  <span class="rating">{% bs_icon 'star-fill' %} {{ recipe.recipe_rating | floatformat:2 }}</span>
+                  <span class="minutes"><i class="fa-solid fa-clock"></i> {{ recipe.minutes_to_make }} mins</span>
+                  <span class="rating"><i class="fa-solid fa-star"></i> {{ recipe.recipe_rating | floatformat:2 }}</span>
                 </div>
               </div>
             </div>
